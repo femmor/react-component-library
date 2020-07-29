@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Switch, Route } from "react-router-dom"
+import Header from "./components/Navigation/Header"
 import './App.css';
+import Pages from "./pages"
+
+// Components
+import ToastNotification from "./components/ToastNotification"
+import Modal from "./components/Modal"
+import Tooltips from "./components/Tooltips"
+import CountAnimation from "./components/CountAnimation"
+import IdleTimerContainer from "./components/IdleTimer"
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header/>
+      <Switch>
+          <Route component={Pages}  exact path="/"/>
+          <Route component={ToastNotification} path="/toast"/>
+          <Route component={Modal} path="/modal"/>
+          <Route component={CountAnimation} path="/count-animation"/>
+          <Route component={Tooltips} path="/tooltips"/>
+          <Route component={IdleTimerContainer} path="/idle-timer"/>
+      </Switch>
+    </>
   );
 }
 
